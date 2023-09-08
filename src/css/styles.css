@@ -54,6 +54,10 @@ body {
   background-color: #004b55;
 }
 
+.load-more-hidden {
+  display: none;
+}
+
 .load-more {
   height: 40px;
   border-radius: 5px;
