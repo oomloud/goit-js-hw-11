@@ -51,7 +51,7 @@ async function getImages(keyword) {
       page: page
     }
   });
-  if (resp.status !== '200') {
+  if (resp.status === '200') {
     throw new Error(resp.statusText);
   }
   return resp.data.hits;
