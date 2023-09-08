@@ -31,6 +31,11 @@ async function submitHandler(evt) {
     if (page * imgPerPage < images.totalHits) {
       elements.loadMore.classList.replace('load-more-hidden', 'load-more');
     }
+    if (images.totalHits === 0) {
+      Notify.failure("Sorry, there are no images matching your search query.Please try again.");
+    } else {
+      Notify.success(`Hooray! We found ${images.totalHits} images! But with premium account you can get access to ${images.total - images.totalHits} more!`)
+    }
   }
   catch {
     elements.loadMore.classList.replace('load-more', 'load-more-hidden');
@@ -76,7 +81,8 @@ async function getImages(keyword) {
     }
   });
   console.log(resp);
-  if (resp.status === '200') {
+  if (resp.status != '200') {
+    Notify.failure("Ooops, something aweful happened. Please try again.");
     throw new Error(resp.statusText);
   }
   return resp.data;
