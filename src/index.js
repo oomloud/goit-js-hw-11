@@ -49,6 +49,11 @@ async function getImages(keyword) {
       safesearch: true,
       per_page: 40,
       page: page
+    },
+    responseType: 'json',
+    headers: {
+      "Accept": "application/json",
+      // "Accept-Encoding": "deflate"
     }
   });
   if (resp.status === '200') {
