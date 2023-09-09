@@ -16,7 +16,7 @@ const elements = {
 elements.form.addEventListener('submit', submitHandler);
 elements.loadMore.addEventListener('click', loadMoreHandler);
 
-const axios = require('axios');
+// const axios = require('axios');
 const API_KEY = '1482357-ebc3f86fcb5bdf18b64ce1456';
 const imgPerPage = 40;
 let page = 1;
@@ -27,7 +27,13 @@ async function submitHandler(evt) {
     const { searchQuery } = evt.currentTarget.elements;
     const images = await getImages(searchQuery.value);
     elements.gallery.innerHTML = '';
+    // checking if user has entered any keyword
+    if (searchQuery.value === '') {
+      Notify.warning("Enter a keyword to get results.");
+      return;
+    }
     elements.gallery.insertAdjacentHTML("afterbegin", createMarkup(images));
+    // hiding/showing Load more button
     if (page * imgPerPage < images.totalHits) {
       elements.loadMore.classList.replace('load-more-hidden', 'load-more');
     }
@@ -44,9 +50,7 @@ async function submitHandler(evt) {
 
 }
 
-
 async function loadMoreHandler(evt) {
-
   try {
     page += 1;
     const keyword = elements.input.value;
