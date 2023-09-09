@@ -1,8 +1,3 @@
-// TODO: BONUS: add switcher between page loading and infinite scroll
-// Створи фронтенд частину застосунку пошуку і перегляду зображень за ключовим словом. Додай оформлення елементів інтерфейсу.
-// При повторному сабміті форми кнопка спочатку ховається, а після запиту знову відображається.
-// У відповіді бекенд повертає властивість totalHits - загальна кількість зображень, які відповідають критерію пошуку (для безкоштовного акаунту). Якщо користувач дійшов до кінця колекції, ховай кнопку і виводь повідомлення з текстом "We're sorry, but you've reached the end of search results.".
-
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { createMarkup } from './js/img_markup';
 import { getImages } from './js/img_get';
